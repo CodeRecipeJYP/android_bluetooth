@@ -7,5 +7,5 @@ import android.databinding.ObservableField;
  */
 
 public class ItemViewModel {
-    ObservableField<BluetoothItem> mItem;
+    public ObservableField<BluetoothItem> mItem = new ObservableField<>(new BluetoothItem());
 }

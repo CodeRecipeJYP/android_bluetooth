@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 
 import com.asuscomm.yangyinetwork.boilerplate.databinding.ActivityMainBinding;
@@ -30,10 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
         mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         binding.setMainviewmodel(new MainViewModel());
+
+        binding.recyclerviewItems.setLayoutManager(
+                new LinearLayoutManager(this));
+        binding.recyclerviewItems.setAdapter(
+                new ItemAdapter());
     }
 
     private void initBluetooth() {
-
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
             // Device does not support Bluetooth

@@ -37,9 +37,7 @@ public class MainViewModel extends ViewModel {
             mOnoffState.set(true);
         }
 
-        Set<BluetoothDevice> bondedDevices = mBluetoothAdapter.getBondedDevices();
-        List<BluetoothItem> bluetoothItems = convertToBluetoothItem(bondedDevices);
-        Log.d(TAG, "activate: " + bluetoothItems.toString());
+        getBondedDevices();
     }
 
     private List<BluetoothItem> convertToBluetoothItem(Set<BluetoothDevice> bondedDevices) {
@@ -55,5 +53,13 @@ public class MainViewModel extends ViewModel {
         }
 
         return items;
+    }
+
+    public void getBondedDevices() {
+        Set<BluetoothDevice> bondedDevices = mBluetoothAdapter.getBondedDevices();
+        List<BluetoothItem> bluetoothItems = convertToBluetoothItem(bondedDevices);
+        Log.d(TAG, "activate: " + bluetoothItems.toString());
+
+        mItems.set(bluetoothItems);
     }
 }

@@ -15,6 +15,9 @@ public class BluetoothItem {
         this.bondState = bondState;
     }
 
+    public BluetoothItem() {
+    }
+
     @Override
     public String toString() {
         return "BluetoothItem{" +
